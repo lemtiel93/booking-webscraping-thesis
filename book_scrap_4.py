@@ -25,7 +25,7 @@ chrome_options.add_experimental_option("detach", True)
 #chiedo in input città e date
 citta = input("Citta:")
 datain= input("Check-in:")
-if len(datain)<1: datain = "2024-02-e20"
+if len(datain)<1: datain = "2024-02-20"
 dataout= input("Check-out:")
 if len(dataout)<1: dataout = "2024-02-25"
 
