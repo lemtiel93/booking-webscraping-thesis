@@ -22,7 +22,7 @@ chrome_options = webdriver.ChromeOptions();
 chrome_options.add_experimental_option("excludeSwitches", ['enable-logging'])
 chrome_options.add_experimental_option("detach", True)
 
-#chiedo in input città e date
+#chiedo in input città e date asdasd
 citta = input("Citta:")
 datain= input("Check-in:")
 if len(datain)<1: datain = "2024-02-20"
