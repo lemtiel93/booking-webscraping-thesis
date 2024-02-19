@@ -16,7 +16,6 @@ def trova_num_pagine():
     print("numero pagine da visitare:",numero_pagine)
     return numero_pagine
 
-windscribe("connect")
 #per bypassare errore certificato
 chrome_options = webdriver.ChromeOptions(); 
 chrome_options.add_experimental_option("excludeSwitches", ['enable-logging'])
@@ -25,7 +24,7 @@ chrome_options.add_experimental_option("detach", True)
 #chiedo in input città e date
 citta = input("Citta:")
 datain= input("Check-in:")
-if len(datain)<1: datain = "2024-02-20"
+if len(datain)<1: datain = "2024-02-24"
 dataout= input("Check-out:")
 if len(dataout)<1: dataout = "2024-02-25"
 
@@ -34,9 +33,7 @@ driver = webdriver.Chrome(options=chrome_options)
 try:
     driver.get(url)
 except:
-    windscribe("disconnect")
     driver.quit()
-
 try:
     wait = WebDriverWait(driver, 10)
     cookie_banner = wait.until(EC.visibility_of_element_located((By.ID,'onetrust-reject-all-handler' )))
@@ -67,7 +64,6 @@ try:     #qualora non avesse funzionato agisco sulla barra di ricerca
     button.click()
     numero_pagine = trova_num_pagine()
 except: 
-    windscribe("disconnect")
     driver.quit()
     print("error")
 
@@ -91,7 +87,6 @@ for pagina in range(numero_pagine):
     try:
         next_page = driver.find_element(By.CSS_SELECTOR,'button[aria-label="pagina successiva"]')
     except:
-        windscribe("disconnect")
         driver.quit()
     #esco dal ciclo dopo che scansiono ultima pagina    
     
@@ -101,5 +96,4 @@ print(dati_hotel)
 print("Hotel scansionati",len(dati_hotel)) 
 
 time.sleep(5)
-windscribe("disconnect")
 driver.quit()
