@@ -1,4 +1,3 @@
-from random_wind import windscribe
 from selenium import webdriver
 from selenium.webdriver.common.keys import Keys
 from selenium.webdriver.common.by import By
@@ -15,6 +14,13 @@ def trova_num_pagine():
     except: numero_pagine = 1
     print("numero pagine da visitare:",numero_pagine)
     return numero_pagine
+
+def close_genius():
+    try:
+        close_button = driver.find_elements(By.CSS_SELECTOR,'button[class="a83ed08757 c21c56c305 f38b6daa18 d691166b09 ab98298258 deab83296e f4552b6561"]') 
+        close_button[-1].click()
+    except: pass
+
 
 #per bypassare errore certificato
 chrome_options = webdriver.ChromeOptions(); 
@@ -41,13 +47,10 @@ try:
 except:
    pass
 time.sleep(4)
-try: #qui chiudo un pop-up dove suggerisce di registrarsi
-    close_button = driver.find_element(By.CSS_SELECTOR,'button[class="a83ed08757 c21c56c305 f38b6daa18 d691166b09 ab98298258 deab83296e f4552b6561"]') 
-    close_button.click()
-except:
-    pass 
 
-try:     #qualora non avesse funzionato agisco sulla barra di ricerca
+close_genius()
+
+try:     #eseguo ricerca
     search = driver.find_element(By.ID,':re:')
     search.send_keys(citta)
     time.sleep(2)
@@ -62,19 +65,23 @@ try:     #qualora non avesse funzionato agisco sulla barra di ricerca
     time.sleep(2)
     button = driver.find_element(By.CSS_SELECTOR,'button[type="submit"]')
     button.click()
-    numero_pagine = trova_num_pagine()
 except: 
     driver.quit()
     print("error")
 
+time.sleep(2)
+
+close_genius()
+numero_pagine = trova_num_pagine()
+
 dati_hotel=[]
+html_content = ""
 for pagina in range(numero_pagine):
     print("scansiono pagina:",pagina+1)
     time.sleep(4)
-    try:
-        close_button = driver.find_elements(By.CSS_SELECTOR,'button[class="a83ed08757 c21c56c305 f38b6daa18 d691166b09 ab98298258 deab83296e f4552b6561"]') 
-        close_button[-1].click()
-    except: pass
+    close_genius()
+    html = driver.page_source
+    html_content += html +"/n/n"
     hotel_per_pagina = driver.find_elements(By.CSS_SELECTOR,'div[data-testid=property-card]')
     for hotel in hotel_per_pagina:
         nome= hotel.find_element(By.CSS_SELECTOR,'div[data-testid="title"]').text
@@ -91,6 +98,9 @@ for pagina in range(numero_pagine):
     #esco dal ciclo dopo che scansiono ultima pagina    
     
     next_page.click()
+
+with open(citta+"-"+datain+".html", "w", encoding="utf-8") as file:
+    file.write(html_content)
 
 print(dati_hotel)  
 print("Hotel scansionati",len(dati_hotel)) 
