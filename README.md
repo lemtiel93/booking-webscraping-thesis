@@ -19,6 +19,12 @@ Le discriminazioni di prezzo si verificano quando gli stessi prodotti o servizi 
 - **Selenium**: Utilizzata per l'automazione del browser web e il webscraping.
 - **Fake User-Agent**: Utilizzata per generare user-agent casuali, simulando l'accesso da diversi dispositivi.
 - **WebDriverManager**: Utilizzata per gestire automaticamente i driver del browser web.
+- **random_wind**: Utilizzata per la gestione della connessione tramite Windscribe (ATTENZIONE: attualmente disattivata).
+
+## Motivazioni per l'utilizzo delle librerie
+
+- **selenium** Essenziale per l'automazione del browser, necessaria per eseguire ricerche e navigare su Booking.com.
+- **fake_useragent**: Utilizzata per fornire user agent casuali ai fini della simulazione di dispositivi variabili, utile per evitare la rilevazione automatizzata e ottenere risultati più accurati durante la scansione degli hotel.
 
 ## Flow dell'Algoritmo
 
@@ -28,3 +34,9 @@ Le discriminazioni di prezzo si verificano quando gli stessi prodotti o servizi 
 4. **Estrazione dei Dati**: Utilizzando tecniche di webscraping, vengono estratti i prezzi degli hotel e altre informazioni pertinenti.
 5. **Analisi dei Dati**: I dati estratti vengono analizzati per identificare eventuali differenze nei prezzi degli hotel in base ai fattori considerati.
 6. **Chiusura del Browser**: Una volta completata l'analisi, il browser viene chiuso.
+
+## Note aggiuntive
+
+- Assicurati di avere un'installazione funzionante di Chrome e i driver di Selenium corrispondenti.
+- Assicurati di rispettare i termini di servizio di Booking.com e di non utilizzare questo programma per scopi non etici o non autorizzati.
+- ATTENZIONE: La connessione tramite Windscribe è disattivata per il momento. Se necessario, può essere riattivata modificando il codice.

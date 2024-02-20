@@ -34,7 +34,7 @@ print(fake_user_agent)
 ############################### TODO per ora disattivato
 #windscribe("connect")
 ###############################
-
+#Mozilla/5.0 (iPhone; CPU iPhone OS 17_3_1 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/17.2 Mobile/15E148 Safari/604.1
 # Aggiungere il fake user agent alle opzioni di Chrome
 chrome_options = webdriver.ChromeOptions(); 
 chrome_options.add_argument(f'user-agent={fake_user_agent}')
@@ -45,7 +45,7 @@ chrome_options.add_experimental_option("detach", True)
 #chiedo in input città e date asdasd
 citta = input("Citta:")
 datain= input("Check-in:")
-if len(datain)<1: datain = "2024-02-20"
+if len(datain)<1: datain = "2024-02-24"
 dataout= input("Check-out:")
 if len(dataout)<1: dataout = "2024-02-25"
 
@@ -54,7 +54,8 @@ driver = webdriver.Chrome(options=chrome_options)
 try:
     driver.get(url)
 except:
-    windscribe("disconnect")
+    print("ehi sono qua")
+    #windscribe("disconnect")
     driver.quit()
 
 try:
@@ -87,7 +88,8 @@ try:     #qualora non avesse funzionato agisco sulla barra di ricerca
     button.click()
     numero_pagine = trova_num_pagine()
 except: 
-    windscribe("disconnect")
+    print("non trovo i dati barra di ricerca")
+    #windscribe("disconnect")
     driver.quit()
     print("error")
 
