@@ -11,6 +11,8 @@
 
 #### Keywords: WebScraping, Booking, Selenium, Discriminazioni, Algoritmo
 
+<br>
+
 ## **Indice**
 
 - [Introduzione](#introduzione)
