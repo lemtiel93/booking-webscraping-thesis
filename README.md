@@ -1,6 +1,6 @@
 # Webscraping per l'Analisi delle Discriminazioni di Prezzo su Booking.com
 
-<!-- Indice e Tributo -->
+---
 
 ### **Codice realizzato e mantenuto da:**
 
@@ -11,7 +11,14 @@
 
 ## **Indice**
 
--
+- [Introduzione](#introduzione)
+- [Cenni](#cenni)
+  - [Webscraping](#webscraping)
+  - [Discriminazioni di Prezzo](#discriminazioni-di-prezzo)
+- [Librerie Utilizzate](#librerie-utilizzate)
+- [Motivazioni per l'utilizzo delle librerie](#motivazioni-per-lutilizzo-delle-librerie)
+- [Flow dell'Algoritmo](#flow-dellalgoritmo)
+- [Note aggiuntive](#note-aggiuntive)
 
 ## Introduzione
 
