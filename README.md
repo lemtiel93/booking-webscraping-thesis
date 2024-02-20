@@ -2,7 +2,10 @@
 
 <!-- Indice e Tributo -->
 
-** Repository realizzata e mantenuta da : ** - Alessandro Argentino - Andrea Saggio
+**Repository realizzata e mantenuta da:**
+
+- Alessandro Argentino
+- Andrea Saggio
 
 ## Introduzione
 
