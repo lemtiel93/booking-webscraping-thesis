@@ -21,6 +21,7 @@
 - [Note aggiuntive](#note-aggiuntive)
 
 <br>
+
 ## Introduzione
 
 Questo progetto utilizza tecniche di webscraping per analizzare e confrontare i prezzi degli hotel su Booking.com in base a diversi fattori, come il dispositivo utilizzato per l'accesso al sito web, l'utilizzo di una VPN e altri parametri. Lo scopo principale di questo progetto è dimostrare la presenza di eventuali discriminazioni di prezzo in base a tali fattori.
