@@ -20,6 +20,7 @@
 - [Librerie Utilizzate](#librerie-utilizzate)
 - [Motivazioni per l'utilizzo delle librerie](#motivazioni-per-lutilizzo-delle-librerie)
 - [Flow dell'Algoritmo](#flow-dellalgoritmo)
+- [Tabella Descrittiva dei dati raccolti](#tabella-descrittiva-dei-dati-raccolti)
 - [Note aggiuntive](#note-aggiuntive)
 
 <br>
