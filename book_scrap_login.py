@@ -93,10 +93,7 @@ except:
 sleep()
 
 close_genius()
-#chiudo schermata google
 
-
-sleep()
 #blocco che effettua accesso utente 
 try: 
     if username is None:
@@ -127,7 +124,7 @@ try:
         ActionChains(driver).move_to_element(passw).move_to_element(submit).click().perform()
         sleep()
 except:pass 
-input("premere invio")
+
 try:     #eseguo ricerca
     search = driver.find_element(By.CSS_SELECTOR,'input[name="ss"]')
     for char in citta:
