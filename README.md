@@ -72,8 +72,22 @@ Le discriminazioni di prezzo si verificano quando gli stessi prodotti o servizi 
    - **Punteggio**
    - **Numero Recensioni**
    - **Distanza Centro**
+     Per Maggiori informazioni consultare [La Tabella Descrittiva dei dati raccolti](#tabella-descrittiva-dei-dati-raccolti)
 
 6. **Chiusura del Browser**: Una volta completata l'analisi, il browser viene chiuso.
+
+## Tabella Descrittiva dei dati raccolti
+
+<br>
+
+| Dato              | Descrizione                                                                                        |
+| ----------------- | -------------------------------------------------------------------------------------------------- |
+| Nome              | Il nome dell'hotel estratto tramite webscraping.                                                   |
+| Prezzo            | Il prezzo dell'hotel estratto tramite webscraping.                                                 |
+| Luogo             | La posizione geografica dell'hotel, potrebbe includere città, stato, quartiere, ecc.               |
+| Punteggio         | Il punteggio dell'hotel sulla piattaforma, solitamente basato sulle recensioni degli utenti.       |
+| Numero Recensioni | Il numero totale di recensioni lasciate dagli utenti per l'hotel.                                  |
+| Distanza Centro   | La distanza dell'hotel dal centro della località in cui si trova, espressa in chilometri o miglia. |
 
 <br>
 
