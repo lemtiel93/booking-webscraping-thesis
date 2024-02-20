@@ -1,5 +1,1 @@
-Le cause potrebbero essere:
 
-Javascript non è abilitato o è bloccato da un'estensione (per es. blocco degli annunci)
-Il tuo browser non supporta i cookie
-Controlla che javascript e i cookie siano abilitati e prova a disattivare il blocco degli annunci.
