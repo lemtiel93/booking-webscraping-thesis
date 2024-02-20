@@ -5,7 +5,7 @@
 ### **Codice realizzato e mantenuto da:**
 
 - **Alessandro Argentino** [[Github](https://github.com/lemtiel93)]
-- **Andrea Saggio** [Github](https://github.com/Saghia)
+- **Andrea Saggio** [[Github](https://github.com/Saghia)]
 
 ## Introduzione
 
