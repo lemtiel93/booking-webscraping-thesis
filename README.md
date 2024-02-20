@@ -73,7 +73,7 @@ Le discriminazioni di prezzo si verificano quando gli stessi prodotti o servizi 
    - **Numero Recensioni**
    - **Distanza Centro**
 
-Per Maggiori informazioni consultare [La Tabella Descrittiva dei dati raccolti](#tabella-descrittiva-dei-dati-raccolti)
+> _(Per Maggiori informazioni consultare [La Tabella Descrittiva dei dati raccolti](#tabella-descrittiva-dei-dati-raccolti))_
 
 6. **Chiusura del Browser**: Una volta completata l'analisi, il browser viene chiuso.
 
