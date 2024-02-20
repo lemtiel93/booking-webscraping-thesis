@@ -63,8 +63,8 @@ Le discriminazioni di prezzo si verificano quando gli stessi prodotti o servizi 
 1. **Generazione del Fake User-Agent**: Viene generato un user-agent casuale per simulare l'accesso da diversi dispositivi.
 2. ~~**Connessione a VPN differente ad ogni avvio**: Viene effettuato un comando WindScribe per connettersi ad una VPN diversa dalla propria~~
 3. **Connessione al Sito Web**: Viene aperto un browser web utilizzando Selenium e il fake user-agent generato.
-4. **Navigazione Booking.com**: Il browser naviga su Booking.com per iniziare la ricerca degli hotel.
-5. **Estrazione dei Dati**: Utilizzando tecniche di webscraping, vengono estratti i prezzi degli hotel e altre informazioni pertinenti.
+4. **Navigazione Booking.com**: Il browser naviga su Booking.com **inserendo query definite** per iniziare la ricerca degli hotel.
+5. **Estrazione dei Dati**: Utilizzando tecniche di webscraping, vengono estratti i seguenti dati per ogni hotel: **Nome**, **Prezzo**, **Luogo**, **Punteggio**, **Numero Recensioni**, **Distanza Centro**.
 6. **Chiusura del Browser**: Una volta completata l'analisi, il browser viene chiuso.
 
 <br>
