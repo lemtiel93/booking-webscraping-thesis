@@ -64,7 +64,7 @@ Le discriminazioni di prezzo si verificano quando gli stessi prodotti o servizi 
 ```
 ├── Avvio
 ├── Generazione Fake User-Agent
-├── \~~Connessione VPN differente\~~
+├── \_Connessione VPN differente\_
 ├── Connessione al Sito Web _(Tramite Selenium)_
 ├── Scraping Booking.com
 ├── Estrazione file HTML e Dati
