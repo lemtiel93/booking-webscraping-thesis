@@ -9,6 +9,8 @@
 
 ---
 
+#### Keywords: WebScraping, Booking, Selenium, Discriminazioni, Algoritmo
+
 ## **Indice**
 
 - [Introduzione](#introduzione)
@@ -26,6 +28,8 @@
 
 Questo progetto utilizza tecniche di webscraping per analizzare e confrontare i prezzi degli hotel su Booking.com in base a diversi fattori, come il dispositivo utilizzato per l'accesso al sito web, l'utilizzo di una VPN e altri parametri. Lo scopo principale di questo progetto è dimostrare la presenza di eventuali discriminazioni di prezzo in base a tali fattori.
 
+<br>
+
 ## Cenni
 
 ### Webscraping
@@ -36,6 +40,8 @@ Il webscraping è una tecnica utilizzata per l'estrazione di dati da siti web. C
 
 Le discriminazioni di prezzo si verificano quando gli stessi prodotti o servizi vengono offerti a prezzi diversi a diversi gruppi di consumatori, senza una giustificazione razionale. In questo contesto, ci si propone di verificare se esistono differenze significative nei prezzi degli hotel su Booking.com in base a vari fattori, come il dispositivo utilizzato per accedere al sito o l'utilizzo di una VPN.
 
+<br>
+
 ## Librerie Utilizzate
 
 - **Selenium**: Utilizzata per l'automazione del browser web e il webscraping.
@@ -43,10 +49,14 @@ Le discriminazioni di prezzo si verificano quando gli stessi prodotti o servizi 
 - **WebDriverManager**: Utilizzata per gestire automaticamente i driver del browser web.
 - **random_wind**: Utilizzata per la gestione della connessione tramite Windscribe (ATTENZIONE: attualmente disattivata).
 
+<br>
+
 ## Motivazioni per l'utilizzo delle librerie
 
 - **selenium** Essenziale per l'automazione del browser, necessaria per eseguire ricerche e navigare su Booking.com.
 - **fake_useragent**: Utilizzata per fornire user agent casuali ai fini della simulazione di dispositivi variabili, utile per evitare la rilevazione automatizzata e ottenere risultati più accurati durante la scansione degli hotel.
+
+<br>
 
 ## Flow dell'Algoritmo
 
@@ -57,8 +67,10 @@ Le discriminazioni di prezzo si verificano quando gli stessi prodotti o servizi 
 5. **Analisi dei Dati**: I dati estratti vengono analizzati per identificare eventuali differenze nei prezzi degli hotel in base ai fattori considerati.
 6. **Chiusura del Browser**: Una volta completata l'analisi, il browser viene chiuso.
 
+<br>
+
 ## Note aggiuntive
 
 - Assicurati di avere un'installazione funzionante di Chrome e i driver di Selenium corrispondenti.
-- Assicurati di rispettare i termini di servizio di Booking.com e di non utilizzare questo programma per scopi non etici o non autorizzati.
+- Assicurati di rispettare i termini di servizio di Booking.com e di non utilizzare questo programma per scopi non etici.
 - ATTENZIONE: La connessione tramite Windscribe è disattivata per il momento. Se necessario, può essere riattivata modificando il codice.
