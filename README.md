@@ -2,10 +2,10 @@
 
 <!-- Indice e Tributo -->
 
-**Repository realizzata e mantenuta da:**
+### **Codice realizzato e mantenuto da:**
 
-- Alessandro Argentino
-- Andrea Saggio
+- **Alessandro Argentino** ([Github])(https://github.com/lemtiel93)
+- **Andrea Saggio** ([Github])(https://github.com/Saghia)
 
 ## Introduzione
 
