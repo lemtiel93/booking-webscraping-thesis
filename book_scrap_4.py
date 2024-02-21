@@ -14,6 +14,8 @@ from fake_useragent import UserAgent
 #per inserire lo useragent
 from selenium.webdriver.chrome.options import Options
 
+from user_agent import get_random_user_agent
+
 def trova_num_pagine():
     wait = WebDriverWait(driver, 10)
     try: 
@@ -37,22 +39,13 @@ def sleep():
     time.sleep(sleeptime)
 
 #per bypassare errore certificato
-
-# Creare un'istanza di UserAgent
-ua = UserAgent()
-
-# Ottenere un fake user agent
-fake_user_agent = ua.random
-#debug 
-#TODO PROBABILMENTE DA CAMBIARE IN UNA LISTA CON VARI USER_AGENT DATO CHE NON INCLUDE QUELLI MOBILE
-print(fake_user_agent)
+choice = int(input("Inserisci 0 per dispositivo mobile o 1 per dispositivo desktop: "))
+fake_user_agent = get_random_user_agent(choice)
+print("User Agent casuale:", fake_user_agent)
 
 ############################### TODO per ora disattivato
 #windscribe("connect")
 ###############################
-#Mozilla/5.0 (iPhone; CPU iPhone OS 17_3_1 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/17.2 Mobile/15E148 Safari/604.1
-# Aggiungere il fake user agent alle opzioni di Chrome
-
 chrome_options = webdriver.ChromeOptions(); 
 chrome_options.add_argument(f'user-agent={fake_user_agent}')
 #per bypassare errore certificato
