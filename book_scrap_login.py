@@ -29,7 +29,7 @@ def close_genius():
     try:
         close_button = driver.find_elements(By.CSS_SELECTOR,'button[class="a83ed08757 c21c56c305 f38b6daa18 d691166b09 ab98298258 deab83296e f4552b6561"]') 
         close_button[-1].click()
-        time.sleep(1)
+        time.sleep(2)
     except: pass
 
 def sleep():
@@ -39,7 +39,8 @@ def sleep():
 #per bypassare errore certificato
 
 # Creare un'istanza di UserAgent
-ua = UserAgent()
+ua = UserAgent(browsers=["chrome", "edge"])
+
 
 # Ottenere un fake user agent
 fake_user_agent = ua.random
@@ -54,7 +55,7 @@ print(fake_user_agent)
 # Aggiungere il fake user agent alle opzioni di Chrome
 
 chrome_options = webdriver.ChromeOptions(); 
-#chrome_options.add_argument(f'user-agent={fake_user_agent}')
+chrome_options.add_argument(f'user-agent={fake_user_agent}')
 #per bypassare errore certificato
 chrome_options.add_experimental_option("excludeSwitches", ['enable-logging'])
 chrome_options.add_experimental_option("detach", True)
