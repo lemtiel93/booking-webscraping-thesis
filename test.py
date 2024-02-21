@@ -15,9 +15,3 @@ chrome_options.add_argument("--enable-javascript")
 chrome_options.add_argument("--enable-cookies")
 chrome_options.add_argument("--disable-blink-features=AutomationControlled")
 
-driver = webdriver.Chrome(options=chrome_options)
-url="https://www.booking.com/"
-try:
-    driver.get(url)
-except:
-    driver.quit()

@@ -125,6 +125,7 @@ try:
         sleep()
 except:pass 
 
+sleep()
 try:     #eseguo ricerca
     search = driver.find_element(By.CSS_SELECTOR,'input[name="ss"]')
     for char in citta:
@@ -198,8 +199,9 @@ for pagina in range(numero_pagine):
     #esco dal ciclo dopo che scansiono ultima pagina    
     
     next_page.click()
-
-with open(citta+"-"+datain+".html", "w", encoding="utf-8") as file:
+#creo il file html inserendo il nome utente nel titolo    
+username = username.split('@')
+with open(citta+"-"+datain+"-"+username[0]+".html", "w", encoding="utf-8") as file:
     file.write(html_content)
 
 print(dati_hotel)  
