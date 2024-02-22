@@ -39,7 +39,7 @@ def sleep():
 #per bypassare errore certificato
 
 # Creare un'istanza di UserAgent
-ua = UserAgent(browsers=["chrome", "edge"])
+ua = UserAgent(browsers=["chrome"])
 
 
 # Ottenere un fake user agent
@@ -187,7 +187,27 @@ for pagina in range(numero_pagine):
             pass
         #DISTANZA DAL CENTRO
         distanza_centro = hotel.find_element(By.CSS_SELECTOR, 'span[data-testid="distance"]').text
-        dati_hotel.append((nome,prezzo,citta,datain,punteggio,num_recensioni,distanza_centro))
+        try:
+            #prova a vedere se hotel è genius
+            hotel.find_element(By.CSS_SELECTOR,'span[data-testid="genius-badge"]')
+            genius = True
+        except NoSuchElementException:
+            genius = False
+        try:
+            #vedo se colazione è inclusa
+            hotel.find_element(By.CSS_SELECTOR,'span[class="a19404c4d7"]')
+            colazione_inclusa = True
+        except NoSuchElementException:
+            colazione_inclusa = False  
+        try:
+            #estraggo altre info
+            info = hotel.find_elements(By.CSS_SELECTOR,'strong')
+            stringa_informazioni=""
+            for i in info:
+                stringa_informazioni += i.text +" "
+        except NoSuchElementException:
+            stringa_informazioni = None  
+        dati_hotel.append((nome,prezzo,citta,datain,punteggio,num_recensioni,distanza_centro,genius,colazione_inclusa,stringa_informazioni))
         #print di check
         #print(dati_hotel)
     #esco dal ciclo dopo che scansiono ultima pagina 
