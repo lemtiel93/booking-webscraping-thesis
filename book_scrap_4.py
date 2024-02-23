@@ -9,12 +9,13 @@ import random
 from selenium.webdriver.common.action_chains import ActionChains
 
 from selenium.common.exceptions import NoSuchElementException
-#FAKEUSERAGENT per simulare dispositivi
-from fake_useragent import UserAgent
+
 #per inserire lo useragent
 from selenium.webdriver.chrome.options import Options
 
 from user_agent import get_random_user_agent
+
+from selenium.webdriver import ActionChains
 
 def trova_num_pagine():
     wait = WebDriverWait(driver, 10)
@@ -259,13 +260,58 @@ elif choice == 0 :
     sleep()
 
     close_genius()
-    numero_pagine = trova_num_pagine()
 
     hotel_per_pagina = driver.find_elements(By.CSS_SELECTOR,'div[data-testid=property-card]')
-    print(len(hotel_per_pagina))  # Utilizzo len() per ottenere la lunghezza della lista
-    for hotel in hotel_per_pagina:
-        print(hotel)
+    print(len(hotel_per_pagina))  # Utilizzo len() per ottenere la lunghezza della lista cioè il numero di card hotel
+    
+    sleep()
+    sleep()
 
+    while True:
+        if len(hotel_per_pagina) < 90 :
+            # Trova tutti gli elementi degli hotel attualmente visualizzati
+            hotel_per_pagina = driver.find_elements(By.CSS_SELECTOR, 'div[data-testid=property-card]')
+        
+            # Stampa il numero di hotel trovati finora
+            print("Numero totale di hotel trovati FINORA:", len(hotel_per_pagina))
+
+            # Scrolla verso il basso per caricare ulteriori hotel
+            driver.execute_script("window.scrollTo(0, document.body.scrollHeight);")
+            
+            # Attendi un po' di tempo per il caricamento degli hotel
+            time.sleep(5)  # Modifica il tempo di attesa a seconda della tua velocità di connessione e del tempo di caricamento della pagina
+        else : 
+            print("SEI USCITO DAI PRIMI 90 : ", len(hotel_per_pagina))
+            try :
+                # Attendi un po' di tempo per il caricamento degli hotel
+                time.sleep(5)  # Modifica il tempo di attesa a seconda della tua velocità di connessione e del tempo di caricamento della pagina
+                btn_carica = driver.find_element(By.XPATH, "//span[text()='Carica più risultati']")
+                # Crea un oggetto ActionChains
+                action = ActionChains(driver)
+                # Muoviti sull'elemento del bottone
+                action.move_to_element(btn_carica).perform()
+                # Attendi un po' di tempo per il caricamento degli hotel
+                time.sleep(5)  # Modifica il tempo di attesa a seconda della tua velocità di connessione e del tempo di caricamento della pagina
+                btn_carica.click()
+                # Attendi un po' di tempo per il caricamento degli hotel
+                time.sleep(5)  # Modifica il tempo di attesa a seconda della tua velocità di connessione e del tempo di caricamento della pagina
+                # Trova tutti gli elementi degli hotel attualmente visualizzati
+                hotel_per_pagina = driver.find_elements(By.CSS_SELECTOR, 'div[data-testid=property-card]')
+            except NoSuchElementException:
+                hotel_per_pagina = driver.find_elements(By.CSS_SELECTOR, 'div[data-testid=property-card]')
+                print("Non ci sono più hotel da caricare.")
+                break
+            
+    #     # Se non ci sono nuovi hotel aggiunti, esci dal ciclo
+    #     if len(new_hotels) == len(hotel_per_pagina):
+    #         break
+
+    # # Alla fine della ricerca, stampa il numero totale di hotel trovati
+    # print("Numero totale di hotel trovati:", len(total_hotels))
+    
+    # Stampa tutti gli hotel trovati
+    # for hotel in total_hotels:
+    #     print(hotel)
 
 
 
