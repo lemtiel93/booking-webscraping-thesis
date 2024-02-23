@@ -4,7 +4,7 @@ from selenium.webdriver.common.by import By
 import time
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
-
+import re
 import random
 from selenium.webdriver.common.action_chains import ActionChains
 
@@ -155,6 +155,14 @@ sleep()
 close_genius()
 numero_pagine = trova_num_pagine()
 
+regex  = "\s\((\w*)"
+os = re.search(regex,fake_user_agent)
+if (os.group(1))=='X11':
+    os='Linux'
+elif(os.group(1))=='Macintosh':
+    os='Mac'
+else: os='Windows'
+
 dati_hotel=[]
 html_content = ""
 for pagina in range(numero_pagine):
@@ -207,7 +215,7 @@ for pagina in range(numero_pagine):
                 stringa_informazioni += i.text +" "
         except NoSuchElementException:
             stringa_informazioni = None  
-        dati_hotel.append((nome,prezzo,citta,datain,punteggio,num_recensioni,distanza_centro,genius,colazione_inclusa,stringa_informazioni))
+        dati_hotel.append((nome,prezzo,citta,datain,punteggio,num_recensioni,distanza_centro,genius,colazione_inclusa,stringa_informazioni,os))
         #print di check
         #print(dati_hotel)
     #esco dal ciclo dopo che scansiono ultima pagina 

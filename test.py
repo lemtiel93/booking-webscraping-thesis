@@ -7,9 +7,10 @@ from selenium.webdriver.support import expected_conditions as EC
 import random
 from selenium.webdriver.common.action_chains import ActionChains
 from fake_useragent import UserAgent
+import re 
 
 
-chrome_options = webdriver.ChromeOptions(); 
+'''chrome_options = webdriver.ChromeOptions(); 
 #per bypassare errore certificato
 chrome_options.add_experimental_option("excludeSwitches", ['enable-logging'])
 chrome_options.add_experimental_option("detach", True)
@@ -23,7 +24,23 @@ try:
 except:
     print("ehi sono qua")
     #windscribe("disconnect")
-    driver.quit()
+    driver.quit()'''
+
+ua = UserAgent(browsers=["chrome"])
+fake_user_agent = ua.random
+print(fake_user_agent)
+regex  = "\s\((\w*)"
+os = re.search(regex,fake_user_agent)
+print(os.group(1))
+if (os.group(1))=='X11':
+    os='Linux'
+elif(os.group(1))=='Macintosh':
+    os='Mac'
+else: pass
+
+print(os)
+
+
 
 
 
