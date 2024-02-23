@@ -268,7 +268,7 @@ elif choice == 0 :
     sleep()
 
     while True:
-        if len(hotel_per_pagina) < 90 :
+        if len(hotel_per_pagina) < 80 :
             # Trova tutti gli elementi degli hotel attualmente visualizzati
             hotel_per_pagina = driver.find_elements(By.CSS_SELECTOR, 'div[data-testid=property-card]')
         
@@ -281,6 +281,7 @@ elif choice == 0 :
             # Attendi un po' di tempo per il caricamento degli hotel
             time.sleep(5)  # Modifica il tempo di attesa a seconda della tua velocità di connessione e del tempo di caricamento della pagina
         else : 
+            break
             print("SEI USCITO DAI PRIMI 90 : ", len(hotel_per_pagina))
             try :
                 # Attendi un po' di tempo per il caricamento degli hotel
@@ -301,6 +302,37 @@ elif choice == 0 :
                 hotel_per_pagina = driver.find_elements(By.CSS_SELECTOR, 'div[data-testid=property-card]')
                 print("Non ci sono più hotel da caricare.")
                 break
+    dati_hotel = []
+    print(hotel_per_pagina)
+    print(len(hotel_per_pagina))
+    for hotel in hotel_per_pagina:
+        nome= hotel.find_element(By.CSS_SELECTOR,'a[data-testid="title"]').text
+        prezzo = hotel.find_element(By.CSS_SELECTOR,'span[data-testid="price-and-discounted-price"]').text
+        citta = hotel.find_element(By.CSS_SELECTOR, 'span[class="afad290af2"]').text
+        #SIA PUNTEGGIO CHE NUM_RECENSIONI POSSONO NON ESSERCI IN CASO DI NUOVO CLIENTE 
+        #PUNTEGGIO TRAMITE IL DIV a3b8729ab1 d86cee9b25
+        try:
+            # Prova a estrarre il punteggio se presente
+            punteggio = hotel.find_element(By.CSS_SELECTOR, 'div[class="abf093bdfe d86cee9b25"]').text
+        except NoSuchElementException:
+            print("nessun punteggio")
+            punteggio = None
+            pass
+        #NUMERO RECENSIONI TRAMITE IL DIV  abf093bdfe f45d8e4c32 d935416c47
+        try:
+            # Prova a estrarre il numero di recensioni se presente
+            num_recensioni = hotel.find_element(By.CSS_SELECTOR, 'span[class="abf093bdfe f45d8e4c32 d935416c47"]').text
+        except NoSuchElementException:
+            print("nessun num_recensioni")
+            num_recensioni = None
+            pass
+        #DISTANZA DAL CENTRO
+        distanza_centro = citta.split("•")[1]
+        citta = citta.split("•")[0]
+        dati_hotel.append((nome,prezzo,citta,datain,punteggio,num_recensioni,distanza_centro))
+        #print di check
+        #print(dati_hotel)
+    print(dati_hotel)
             
     #     # Se non ci sono nuovi hotel aggiunti, esci dal ciclo
     #     if len(new_hotels) == len(hotel_per_pagina):
