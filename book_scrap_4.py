@@ -333,18 +333,6 @@ elif choice == 0 :
         #print di check
         #print(dati_hotel)
     print(dati_hotel)
-            
-    #     # Se non ci sono nuovi hotel aggiunti, esci dal ciclo
-    #     if len(new_hotels) == len(hotel_per_pagina):
-    #         break
-
-    # # Alla fine della ricerca, stampa il numero totale di hotel trovati
-    # print("Numero totale di hotel trovati:", len(total_hotels))
-    
-    # Stampa tutti gli hotel trovati
-    # for hotel in total_hotels:
-    #     print(hotel)
-
 
 
 else :
