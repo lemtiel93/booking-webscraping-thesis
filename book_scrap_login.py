@@ -33,7 +33,7 @@ def close_genius():
     except: pass
 
 def sleep():
-    sleeptime = random.uniform(2,5)
+    sleeptime = random.uniform(3,5)
     time.sleep(sleeptime)
 
 #per bypassare errore certificato
@@ -155,7 +155,7 @@ sleep()
 close_genius()
 numero_pagine = trova_num_pagine()
 
-regex  = "\s\((\w*)"
+regex  = r"\s\((\w*)"
 os = re.search(regex,fake_user_agent)
 if (os.group(1))=='X11':
     os='Linux'
@@ -168,6 +168,7 @@ html_content = ""
 for pagina in range(numero_pagine):
     print("scansiono pagina:",pagina+1)
     sleep()
+    time.sleep(1)
     close_genius()
     html = driver.page_source
     html_content += html +"/n/n"
@@ -224,6 +225,7 @@ for pagina in range(numero_pagine):
     try:
         next_page = driver.find_element(By.CSS_SELECTOR,'button[aria-label="pagina successiva"]')
     except:
+        print("sono uscito qui")
         driver.quit()
     #esco dal ciclo dopo che scansiono ultima pagina    
     
