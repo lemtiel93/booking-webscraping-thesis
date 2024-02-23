@@ -61,14 +61,15 @@ chrome_options.add_experimental_option("excludeSwitches", ['enable-logging'])
 chrome_options.add_experimental_option("detach", True)
 chrome_options.add_argument('--start-maximized')
 chrome_options.add_argument("--enable-javascript")
+chrome_options.add_argument("--clear-data")
 chrome_options.add_argument("--disable-blink-features=AutomationControlled")
 
 #chiedo in input città e date asdasd
 citta = input("Citta:")
 datain= input("Check-in:")
-if len(datain)<1: datain = "2024-02-24"
+if len(datain)<1: datain = "2024-03-14"
 dataout= input("Check-out:")
-if len(dataout)<1: dataout = "2024-02-25"
+if len(dataout)<1: dataout = "2024-03-15"
 
 userlist =["sunnytraveler@libero.it","pantilaura56@gmail.com"]
 username = random.choice(userlist)
@@ -129,6 +130,8 @@ except:pass
 sleep()
 try:     #eseguo ricerca
     search = driver.find_element(By.CSS_SELECTOR,'input[name="ss"]')
+    for i in range(12):
+        search.send_keys(Keys.BACK_SPACE)
     for char in citta:
         search.send_keys(char)
         time.sleep(random.uniform(0.1,0.25))
@@ -227,6 +230,7 @@ for pagina in range(numero_pagine):
     except:
         print("sono uscito qui")
         driver.quit()
+        break
     #esco dal ciclo dopo che scansiono ultima pagina    
     
     next_page.click()
