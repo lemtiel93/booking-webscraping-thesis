@@ -9,7 +9,7 @@ import random
 from selenium.webdriver.common.action_chains import ActionChains
 import pandas as pd
 from selenium.common.exceptions import NoSuchElementException
-
+from fake_useragent import UserAgent
 #per inserire lo useragent
 from selenium.webdriver.chrome.options import Options
 from user_agent import get_random_user_agent
