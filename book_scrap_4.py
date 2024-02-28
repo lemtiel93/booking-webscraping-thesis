@@ -49,7 +49,6 @@ def estrai_hotel(dati):
         #SIA PUNTEGGIO CHE NUM_RECENSIONI POSSONO NON ESSERCI IN CASO DI NUOVO CLIENTE 
         #PUNTEGGIO TRAMITE IL DIV a3b8729ab1 d86cee9b25
         try:
-            #
             # Prova a estrarre il punteggio se presente
             punteggio = hotel.find_element(By.CSS_SELECTOR, 'div[class="a3b8729ab1 d86cee9b25"]').text
         except NoSuchElementException:
@@ -94,7 +93,7 @@ def estrai_hotel(dati):
                 deal += i.find_element(By.CSS_SELECTOR,'span[class="b30f8eb2d6"]').text + " "
         except NoSuchElementException:
             deal = None
-        dati.append((nome,prezzo,stanza,citta,datain,punteggio,num_recensioni,distanza_centro,genius,deal,colazione_inclusa,stringa_informazioni,os,username,now))
+        dati.append((nome,prezzo,stanza,citta,datain,punteggio,num_recensioni,distanza_centro,genius,deal,colazione_inclusa,stringa_informazioni,os,username,now2))
 
 def crea_html():
     with open(citta+"-"+datain+"-"+username+"-"+now+".html", "w", encoding="utf-8") as file:
@@ -367,7 +366,7 @@ elif choice == 0 :
     print(len(hotel_per_pagina))  # Utilizzo len() per ottenere la lunghezza della lista cioè il numero di card hotel
 
     sleep()
-
+    if_count = 0
     while True:
         if len(hotel_per_pagina) < 80 :
             # Trova tutti gli elementi degli hotel attualmente visualizzati
@@ -381,6 +380,9 @@ elif choice == 0 :
             
             # Attendi un po' di tempo per il caricamento degli hotel
             time.sleep(5)  # Modifica il tempo di attesa a seconda della tua velocità di connessione e del tempo di caricamento della pagina
+            if_count += 1
+            if (if_count == 4):
+                break    
         else : 
             print("SEI USCITO DAI PRIMI 90 : ", len(hotel_per_pagina))
             try :
