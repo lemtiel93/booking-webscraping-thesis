@@ -281,7 +281,6 @@ elif choice == 0 :
             # Attendi un po' di tempo per il caricamento degli hotel
             time.sleep(5)  # Modifica il tempo di attesa a seconda della tua velocità di connessione e del tempo di caricamento della pagina
         else : 
-            break
             print("SEI USCITO DAI PRIMI 90 : ", len(hotel_per_pagina))
             try :
                 # Attendi un po' di tempo per il caricamento degli hotel
