@@ -140,6 +140,10 @@ start_time = time.time()
 now = datetime.datetime.now()
 now = now.strftime("%m-%d---%H-%M")
 
+#ottengo data e orario in cui ho effettuato ricerca
+now2 = datetime.datetime.now()
+now2 = now2.strftime("%m-%d-%YYYY---%H:%M")
+
 userlist =["sunnytraveler@libero.it","pantilaura56@gmail.com","marcofantile@proton.me"]
 username = random.choice(userlist)
 password = "Viaggiatore45!"
@@ -244,7 +248,7 @@ if choice == 1 :
 
     dati_hotel = []
     #creo header per i dati
-    dati_hotel.append(("nome_hotel","prezzo","stanza","città","data","punteggio","numero_recensioni","distanza_centro","genius","offerte","colazione_inclusa","info_varie","os","username","orario_ricerca"))  
+    dati_hotel.append(("nome_hotel","prezzo","stanza","città","data","punteggio","numero_recensioni","distanza_centro","genius","offerte","colazione_inclusa","info_varie","os","username","TIMESTAMP"))  
     html_content_list=[]
     for pagina in range(numero_pagine):
         print("scansiono pagina:",pagina+1)
@@ -402,6 +406,17 @@ elif choice == 0 :
     print(hotel_per_pagina)
     print(len(hotel_per_pagina))
     for hotel in hotel_per_pagina:
+        #dati_hotel.append(("nome_hotel","prezzo","stanza","città","data","punteggio",
+        #"numero_recensioni","distanza_centro","genius","offerte","colazione_inclusa","info_varie","os","username","orario_ricerca"))  
+        # genius -> se hotel è genius -> devi avere effettuato il login -> True->si  o False->no
+        # offerte -> offerte di booking paga o super segrete #TODO DA VEDERE SE SI PUò DIVIDERE IN PIU COLONNE CON BOOLEANI
+        # LO FACCIAMO SU PANDAS
+        # colazione_inclusa -> se c'è o meno : TRUE->si O FALSE->no 
+        # info_varie -> cancellazione gratuita o pagamento in struttura #TODO DA VEDERE SE SI PUò DIVIDERE IN PIU COLONNE CON BOOLEANI
+        # LO FACCIAMO SU PANDAS
+        # os -> sistema operativo della ricerca
+        # username -> mail di ricerca
+        # orario_ricerca -> timestamp     #TODO 02-28-2024---17:47 FARE NOW2
         nome= hotel.find_element(By.CSS_SELECTOR,'a[data-testid="title"]').text
         prezzo = hotel.find_element(By.CSS_SELECTOR,'span[data-testid="price-and-discounted-price"]').text
         citta = hotel.find_element(By.CSS_SELECTOR, 'span[class="afad290af2"]').text
