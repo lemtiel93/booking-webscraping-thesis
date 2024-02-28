@@ -150,6 +150,7 @@ try:
 except:
     print("ehi sono qua")
     #windscribe("disconnect")
+    #
     driver.quit()
 try:
     wait = WebDriverWait(driver, 10)
