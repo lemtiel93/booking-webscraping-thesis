@@ -20,7 +20,7 @@ def trova_num_pagine():
         numero_pagine = wait.until(EC.visibility_of_element_located((By.CSS_SELECTOR,'button.a83ed08757.a2028338ea' )))
         numero_pagine = driver.find_elements(By.CSS_SELECTOR,'button.a83ed08757.a2028338ea')
         numero_pagine = int(numero_pagine[-1].text)
-    except: numero_pagine = 1
+    except: numero_pagine = 0
     print("numero pagine da visitare:",numero_pagine)
     return numero_pagine
 
@@ -60,16 +60,16 @@ chrome_options.add_argument(f'user-agent={fake_user_agent}')
 chrome_options.add_experimental_option("excludeSwitches", ['enable-logging'])
 chrome_options.add_experimental_option("detach", True)
 chrome_options.add_argument('--start-maximized')
-chrome_options.add_argument("--enable-javascript")
-chrome_options.add_argument("--clear-data")
+#chrome_options.add_argument("--enable-javascript")
+#chrome_options.add_argument("--clear-data")
 chrome_options.add_argument("--disable-blink-features=AutomationControlled")
 
 #chiedo in input città e date asdasd
 citta = input("Citta:")
 datain= input("Check-in:")
-if len(datain)<1: datain = "2024-03-14"
+if len(datain)<1: datain = "2024-03-05"
 dataout= input("Check-out:")
-if len(dataout)<1: dataout = "2024-03-15"
+if len(dataout)<1: dataout = "2024-03-06"
 
 userlist =["sunnytraveler@libero.it","pantilaura56@gmail.com"]
 username = random.choice(userlist)
