@@ -328,7 +328,7 @@ elif choice == 0 :
 
     sleep()
     close_genius()
-
+    input("331")
     try:     #eseguo ricerca mobile
         search = driver.find_element(By.ID,':r8:')
         search.click()
@@ -381,6 +381,7 @@ elif choice == 0 :
             # Attendi un po' di tempo per il caricamento degli hotel
             time.sleep(5)  # Modifica il tempo di attesa a seconda della tua velocità di connessione e del tempo di caricamento della pagina
             if_count += 1
+            # Esce dal ciclo se ci sono meno di 80 strutture
             if (if_count == 4):
                 break    
         else : 
