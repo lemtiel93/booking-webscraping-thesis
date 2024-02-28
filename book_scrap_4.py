@@ -9,6 +9,7 @@ import random
 from selenium.webdriver.common.action_chains import ActionChains
 import pandas as pd
 from selenium.common.exceptions import NoSuchElementException
+#FAKEUSERAGENT per simulare dispositivi
 from fake_useragent import UserAgent
 #per inserire lo useragent
 from selenium.webdriver.chrome.options import Options
