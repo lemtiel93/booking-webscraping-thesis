@@ -48,6 +48,7 @@ def estrai_hotel(dati):
         #SIA PUNTEGGIO CHE NUM_RECENSIONI POSSONO NON ESSERCI IN CASO DI NUOVO CLIENTE 
         #PUNTEGGIO TRAMITE IL DIV a3b8729ab1 d86cee9b25
         try:
+            #
             # Prova a estrarre il punteggio se presente
             punteggio = hotel.find_element(By.CSS_SELECTOR, 'div[class="a3b8729ab1 d86cee9b25"]').text
         except NoSuchElementException:
