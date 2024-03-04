@@ -41,11 +41,20 @@ def sleep():
 def estrai_hotel(dati):
     hotel_per_pagina = driver.find_elements(By.CSS_SELECTOR,'div[data-testid=property-card]')
     for hotel in hotel_per_pagina:
-        html_content_list.append(hotel.get_attribute("outerHTML"))
-        nome= hotel.find_element(By.CSS_SELECTOR,'div[data-testid="title"]').text
-        stanza = hotel.find_element(By.CSS_SELECTOR,'h4[role="link"]').text
-        prezzo = hotel.find_element(By.CSS_SELECTOR,'span[data-testid="price-and-discounted-price"]').text
-        citta = hotel.find_element(By.CSS_SELECTOR, 'span[data-testid="address"]').text
+        try:
+            html_content_list.append(hotel.get_attribute("outerHTML"))
+        except: 
+            pass
+        try:
+            nome= hotel.find_element(By.CSS_SELECTOR,'div[data-testid="title"]').text
+            prezzo = hotel.find_element(By.CSS_SELECTOR,'span[data-testid="price-and-discounted-price"]').text
+            citta = hotel.find_element(By.CSS_SELECTOR, 'span[data-testid="address"]').text
+        except: 
+            continue
+        try:
+            stanza = hotel.find_element(By.CSS_SELECTOR,'h4[role="link"]').text
+        except NoSuchElementException:
+            stanza = None
         #SIA PUNTEGGIO CHE NUM_RECENSIONI POSSONO NON ESSERCI IN CASO DI NUOVO CLIENTE 
         #PUNTEGGIO TRAMITE IL DIV a3b8729ab1 d86cee9b25
         try:
@@ -54,7 +63,6 @@ def estrai_hotel(dati):
         except NoSuchElementException:
             print("nessun punteggio")
             punteggio = None
-            pass
         #NUMERO RECENSIONI TRAMITE IL DIV  abf093bdfe f45d8e4c32 d935416c47
         try:
             # Prova a estrarre il numero di recensioni se presente
@@ -62,9 +70,11 @@ def estrai_hotel(dati):
         except NoSuchElementException:
             print("nessun num_recensioni")
             num_recensioni = None
-            pass
         #DISTANZA DAL CENTRO
-        distanza_centro = hotel.find_element(By.CSS_SELECTOR, 'span[data-testid="distance"]').text
+        try:
+            distanza_centro = hotel.find_element(By.CSS_SELECTOR, 'span[data-testid="distance"]').text
+        except NoSuchElementException:
+            distanza_centro = None
         try:
             #prova a vedere se hotel è genius
             hotel.find_element(By.CSS_SELECTOR,'span[data-testid="genius-badge"]')
