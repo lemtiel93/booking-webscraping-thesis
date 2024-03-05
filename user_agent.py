@@ -6,7 +6,7 @@ def get_random_user_agent(choice):
             # Samsung Galaxy S22 5G
             "Mozilla/5.0 (Linux; Android 13; SM-S901B) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/112.0.0.0 Mobile Safari/537.36",
             # iPhone 13 Pro Max
-            "Mozilla/5.0 (iPhone14,3; U; CPU iPhone OS 15_0 like Mac OS X) AppleWebKit/602.1.50 (KHTML, like Gecko) Version/10.0 Mobile/19A346 Safari/602.1"
+            #"Mozilla/5.0 (iPhone14,3; U; CPU iPhone OS 15_0 like Mac OS X) AppleWebKit/602.1.50 (KHTML, like Gecko) Version/10.0 Mobile/19A346 Safari/602.1"
         ]
     elif choice == 1:  # Se è scelto un dispositivo desktop
         # PER FUNZIONARE DEVI ESSERE A SCHERMO INTERO SENNO CREDE DI ESSERE SU MOBILE

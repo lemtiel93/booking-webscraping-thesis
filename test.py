@@ -8,8 +8,9 @@ import random
 from selenium.webdriver.common.action_chains import ActionChains
 from fake_useragent import UserAgent
 import re 
+import datetime
 
-
+'''
 chrome_options = webdriver.ChromeOptions(); 
 #per bypassare errore certificato
 chrome_options.add_experimental_option("excludeSwitches", ['enable-logging'])
@@ -23,7 +24,7 @@ try:
 except:
     print("ehi sono qua")
     #windscribe("disconnect")
-    driver.quit()
+    driver.quit()'''
 
 '''ua = UserAgent(browsers=["chrome"])
 fake_user_agent = ua.random
@@ -38,6 +39,10 @@ elif(os.group(1))=='Macintosh':
 else: pass
 
 print(os)'''
+
+now = datetime.datetime.now()
+now = now.strftime("%Y-%m-%d---%H:%M")
+print(now)
 
 
 
