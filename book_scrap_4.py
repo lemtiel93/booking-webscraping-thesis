@@ -116,7 +116,13 @@ def estrai_hotel(dati):
                 deal += i.find_element(By.CSS_SELECTOR,'span[class="b30f8eb2d6"]').text + " "
         except NoSuchElementException:
             deal = None
-        dati.append((nome,prezzo_iniziale,prezzo,stanza,citta,datain,punteggio,num_recensioni,distanza_centro,genius,deal,colazione_inclusa,senza_pagamento_anticipato,cancellazione_gratuita,os,username,user_agent_type,now2))
+        # Credito guadagnato
+        try: 
+            div_credito = hotel.find_element(By.CSS_SELECTOR,'div[data-testid="earn-credits"')
+            credito = div_credito.find_element(By.CSS_SELECTOR,'span[class="b30f8eb2d6"]').text
+        except:
+            credito = None
+        dati.append((nome,prezzo_iniziale,prezzo,credito,stanza,citta,datain,punteggio,num_recensioni,distanza_centro,genius,deal,colazione_inclusa,senza_pagamento_anticipato,cancellazione_gratuita,os,username,user_agent_type,now2))
 
 def crea_html():
     with open(citta_csv+"-"+datain+"-"+username+"-"+now+".html", "w", encoding="utf-8") as file:
@@ -228,7 +234,7 @@ except:
 
 # Lista con i dati degli hotel e inizializzazione header
 dati_hotel = []
-dati_hotel.append(("nome_hotel","prezzo_iniziale","prezzo","stanza","città","data","punteggio","numero_recensioni","distanza_centro","genius","offerte","colazione_inclusa","senza_pagamento_anticipato","cancellazione_gratuita","os","username","user_agent_type","TIMESTAMP"))  
+dati_hotel.append(("nome_hotel","prezzo_iniziale","prezzo","credito_guadagnato","stanza","città","data","punteggio","numero_recensioni","distanza_centro","genius","offerte","colazione_inclusa","senza_pagamento_anticipato","cancellazione_gratuita","os","username","user_agent_type","TIMESTAMP"))  
 # Lista per card html degli hotel
 html_content_list=[]
 
@@ -526,8 +532,14 @@ elif choice == 0 :
             stanza = div_stanza.find_element(By.TAG_NAME,'b').text
         except NoSuchElementException:
             stanza = None
+        # Credito guadagnato
+        try: 
+            div_credito = hotel.find_element(By.CSS_SELECTOR,'div[data-testid="earn-credits"')
+            credito = div_credito.find_element(By.CSS_SELECTOR,'span[class="b30f8eb2d6"]').text
+        except:
+            credito = None
         
-        dati_hotel.append((nome,prezzo_iniziale,prezzo,stanza,citta,datain,punteggio,num_recensioni,distanza_centro,genius,deal,colazione_inclusa,senza_pagamento_anticipato,cancellazione_gratuita,os,username,user_agent_type,now2))
+        dati_hotel.append((nome,prezzo_iniziale,prezzo,credito,stanza,citta,datain,punteggio,num_recensioni,distanza_centro,genius,deal,colazione_inclusa,senza_pagamento_anticipato,cancellazione_gratuita,os,username,user_agent_type,now2))
         #print di check
         #print(dati_hotel)
     print(dati_hotel)
