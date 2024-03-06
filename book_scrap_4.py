@@ -122,7 +122,43 @@ def estrai_hotel(dati):
             credito = div_credito.find_element(By.CSS_SELECTOR,'span[class="b30f8eb2d6"]').text
         except:
             credito = None
-        dati.append((nome,prezzo_iniziale,prezzo,credito,stanza,citta,datain,punteggio,num_recensioni,distanza_centro,genius,deal,colazione_inclusa,senza_pagamento_anticipato,cancellazione_gratuita,os,username,user_agent_type,now2))
+        # Stelle booking
+        try:
+            div_stelle_booking = hotel.find_element(By.CSS_SELECTOR,'div[data-testid="rating-squares"]')
+            stelle_booking = len(div_stelle_booking.find_elements(By.CSS_SELECTOR,'span[aria-hidden="true"]'))
+        except:
+            stelle_booking = None
+        # Stelle
+        try:
+            div_stelle = hotel.find_element(By.CSS_SELECTOR,'div[data-testid="rating-stars"]')
+            stelle = len(div_stelle.find_elements(By.CSS_SELECTOR,'span[aria-hidden="true"]'))
+        except:
+            stelle = None
+        # Partner Preferiti
+        try: 
+            partner_preferiti_el = hotel.find_element(By.CSS_SELECTOR,'span[data-testid="preferred-badge"]')
+            partner_preferiti = "preferred"
+        except: 
+            partner_preferiti = None
+        if partner_preferiti=="preferred":
+            try:
+                partner_preferiti_el.find_element(By.CSS_SELECTOR,'span[aria-label="Questa struttura partecipa al nostro Programma Preferiti Plus, pensato per offrire un servizio eccellente e un ottimo rapporto qualità-prezzo. In caso di prenotazione la struttura ci pagherà una commissione più alta."]')
+                partner_preferiti = "preferred_plus"
+            except: 
+                pass
+        # In evidenza
+        try: 
+            hotel.find_element(By.CSS_SELECTOR,'span[class="abf093bdfe c147fc6dd1 d516b1d73e"]')
+            evidenza = True
+        except: 
+            evidenza = False
+        # Novità su booking
+        try: 
+            hotel.find_element(By.CSS_SELECTOR,'span[class="abf093bdfe c147fc6dd1 d8d1f2a629"]')
+            novita = True
+        except:
+            novita = False
+        dati.append((nome,prezzo_iniziale,prezzo,credito,stanza,citta,datain,punteggio,stelle,stelle_booking,partner_preferiti,novita,evidenza,num_recensioni,distanza_centro,genius,deal,colazione_inclusa,senza_pagamento_anticipato,cancellazione_gratuita,os,username,user_agent_type,now2))
 
 def crea_html():
     with open(citta_csv+"-"+datain+"-"+username+"-"+now+".html", "w", encoding="utf-8") as file:
@@ -234,7 +270,7 @@ except:
 
 # Lista con i dati degli hotel e inizializzazione header
 dati_hotel = []
-dati_hotel.append(("nome_hotel","prezzo_iniziale","prezzo","credito_guadagnato","stanza","città","data","punteggio","numero_recensioni","distanza_centro","genius","offerte","colazione_inclusa","senza_pagamento_anticipato","cancellazione_gratuita","os","username","user_agent_type","TIMESTAMP"))  
+dati_hotel.append(("nome_hotel","prezzo_iniziale","prezzo","credito_guadagnato","stanza","città","data","punteggio","stelle","stelle_booking","partner_preferiti","novita","evidenza","numero_recensioni","distanza_centro","genius","offerte","colazione_inclusa","senza_pagamento_anticipato","cancellazione_gratuita","os","username","user_agent_type","TIMESTAMP"))  
 # Lista per card html degli hotel
 html_content_list=[]
 
@@ -538,8 +574,41 @@ elif choice == 0 :
             credito = div_credito.find_element(By.CSS_SELECTOR,'span[class="b30f8eb2d6"]').text
         except:
             credito = None
-        
-        dati_hotel.append((nome,prezzo_iniziale,prezzo,credito,stanza,citta,datain,punteggio,num_recensioni,distanza_centro,genius,deal,colazione_inclusa,senza_pagamento_anticipato,cancellazione_gratuita,os,username,user_agent_type,now2))
+        # Stelle booking
+        try:
+            div_stelle_booking = hotel.find_element(By.CSS_SELECTOR,'div[data-testid="rating-squares"]')
+            stelle_booking = len(div_stelle_booking.find_elements(By.CSS_SELECTOR,'span[aria-hidden="true"]'))
+        except:
+            stelle_booking = None
+        # Stelle hotel
+        try:
+            div_stelle = hotel.find_element(By.CSS_SELECTOR,'div[data-testid="rating-stars"]')
+            stelle = len(div_stelle.find_elements(By.CSS_SELECTOR,'span[aria-hidden="true"]'))
+        except:
+            stelle = None
+        # Partner Preferiti
+        try: 
+            hotel.find_element(By.CSS_SELECTOR,'span[data-testid="preferred"]')
+            partner_preferiti = "preferred"
+        except: 
+            try: 
+                hotel.find_element(By.CSS_SELECTOR,'span[data-testid="preferred-plus"]')
+                partner_preferiti = "preferred_plus"
+            except:
+                partner_preferiti = "None"
+        # In evidenza
+        try: 
+            hotel.find_element(By.CSS_SELECTOR,'span[class="abf093bdfe c147fc6dd1 c9b2c9abc2 d516b1d73e"]')
+            evidenza = True
+        except: 
+            evidenza = False
+        # Novità su booking
+        try: 
+            hotel.find_element(By.CSS_SELECTOR,'span[class="abf093bdfe c147fc6dd1 d8d1f2a629"]')
+            novita = True
+        except:
+            novita = False
+        dati_hotel.append((nome,prezzo_iniziale,prezzo,credito,stanza,citta,datain,punteggio,stelle,stelle_booking,partner_preferiti,novita,evidenza,num_recensioni,distanza_centro,genius,deal,colazione_inclusa,senza_pagamento_anticipato,cancellazione_gratuita,os,username,user_agent_type,now2))
         #print di check
         #print(dati_hotel)
     print(dati_hotel)
