@@ -225,6 +225,12 @@ elif choice == 1 :
 
 print(fake_user_agent)
 
+userlist =["sunnytraveler@libero.it","pantilaura56@gmail.com","marcofantile@proton.me"]
+#username = random.choice(userlist)
+username = "marcofantile@proton.me"
+password = "Viaggiatore45!"
+print(username)
+
 chrome_options = webdriver.ChromeOptions(); 
 chrome_options.add_argument(f'user-agent={fake_user_agent}')
 #per bypassare errore certificato
@@ -241,9 +247,9 @@ citta = input("Citta:")
 # Variabile per denominare file csv
 citta_csv = citta.strip().lower()
 datain= input("Check-in:")
-if len(datain)<1: datain = "2024-03-20"
+if len(datain)<1: datain = "2024-03-28"
 dataout= input("Check-out:")
-if len(dataout)<1: dataout = "2024-03-21"
+if len(dataout)<1: dataout = "2024-03-29"
 
 start_time = time.time()
 #ottengo data e orario in cui ho effettuato ricerca
@@ -253,10 +259,6 @@ now = now.strftime("%m-%d---%H-%M")
 #ottengo data e orario in cui ho effettuato ricerca
 now2 = datetime.datetime.now()
 now2 = now2.strftime("%m-%d-%Y---%H:%M")
-
-userlist =["sunnytraveler@libero.it","pantilaura56@gmail.com","marcofantile@proton.me"]
-username = random.choice(userlist)
-password = "Viaggiatore45!"
 
 url = "https://www.booking.com/"
 driver = webdriver.Chrome(options=chrome_options)
