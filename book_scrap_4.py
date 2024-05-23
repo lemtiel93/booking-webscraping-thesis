@@ -92,7 +92,7 @@ def estrai_hotel(dati):
         except NoSuchElementException:
             colazione_inclusa = False  
         try:
-            #pagamento anticipato e cancellazione gratuita
+            #Pagamento anticipato e cancellazione gratuita
             info_varie = hotel.find_elements(By.CSS_SELECTOR,'strong')
             stringa_informazioni=""
             for i in info_varie:
@@ -158,7 +158,10 @@ def estrai_hotel(dati):
             novita = True
         except:
             novita = False
-        dati.append((nome,prezzo_iniziale,prezzo,credito,stanza,citta,datain,punteggio,stelle,stelle_booking,partner_preferiti,novita,evidenza,num_recensioni,distanza_centro,genius,deal,colazione_inclusa,senza_pagamento_anticipato,cancellazione_gratuita,os,username,user_agent_type,now2))
+        dati.append((nome,prezzo_iniziale,prezzo,credito,stanza,citta,datain,punteggio,stelle,
+                     stelle_booking,partner_preferiti,novita,evidenza,num_recensioni,distanza_centro,
+                     genius,deal,colazione_inclusa,senza_pagamento_anticipato,cancellazione_gratuita,
+                     os,username,user_agent_type,now2))
 
 def crea_html():
     with open(citta_csv+"-"+datain+"-"+username+"-"+now+".html", "w", encoding="utf-8") as file:
@@ -172,32 +175,35 @@ def login():
         if username is None:
             pass
         else:
-            accedi = driver.find_element(By.CSS_SELECTOR,'a[data-testid="header-sign-in-button"]')
-            ActionChains(driver).move_to_element(accedi).perform()
-            accedi.click()
-            sleep()
-            email = driver.find_element(By.CSS_SELECTOR,'input[type="email"]')
-            ActionChains(driver).move_to_element(email).perform()
-            email.click()
-            for char in username: 
-                email.send_keys(char)
-                time.sleep(random.uniform(0.1,0.25))
-            sleep()
-            submit = driver.find_element(By.CSS_SELECTOR,'button[type="submit"]')
-            ActionChains(driver).move_to_element(email).move_to_element(submit).click().perform()
-            sleep()
-            passw = driver.find_element(By.CSS_SELECTOR,'input[type="password"]')
-            ActionChains(driver).move_to_element(passw).perform()
-            passw.click()
-            for char in password:
-                passw.send_keys(char)
-                time.sleep(random.uniform(0.1,0.25))
-            sleep()
-            submit = driver.find_element(By.CSS_SELECTOR,'button[type="submit"]')
-            ActionChains(driver).move_to_element(passw).move_to_element(submit).click().perform()
-            sleep()
-            
-    except:pass 
+            if choice==0:
+                input("Premere INVIO se correttamente loggato")
+                return
+            else:
+                accedi = driver.find_element(By.CSS_SELECTOR,'a[data-testid="header-sign-in-button"]')
+                ActionChains(driver).move_to_element(accedi).perform()
+                accedi.click()
+                sleep()
+                email = driver.find_element(By.CSS_SELECTOR,'input[type="email"]')
+                ActionChains(driver).move_to_element(email).perform()
+                email.click()
+                for char in username: 
+                    email.send_keys(char)
+                    time.sleep(random.uniform(0.1,0.25))
+                sleep()
+                submit = driver.find_element(By.CSS_SELECTOR,'button[type="submit"]')
+                ActionChains(driver).move_to_element(email).move_to_element(submit).click().perform()
+                sleep()
+                passw = driver.find_element(By.CSS_SELECTOR,'input[type="password"]')
+                ActionChains(driver).move_to_element(passw).perform()
+                passw.click()
+                for char in password:
+                    passw.send_keys(char)
+                    time.sleep(random.uniform(0.1,0.25))
+                sleep()
+                submit = driver.find_element(By.CSS_SELECTOR,'button[type="submit"]')
+                ActionChains(driver).move_to_element(passw).move_to_element(submit).click().perform()
+                sleep()
+    except: pass
 
 def crea_csv():
     try:
@@ -225,9 +231,10 @@ elif choice == 1 :
 
 print(fake_user_agent)
 
-userlist =["sunnytraveler@libero.it","pantilaura56@gmail.com","marcofantile@proton.me"]
-#username = random.choice(userlist)
-username = "marcofantile@proton.me"
+#userlist =["sunnytraveler@libero.it","pantilaura56@gmail.com","marcofantile@proton.me","ginoverdi81@libero.it","federicaberti@proton.me"]
+userlist =["ginoverdi81@libero.it","federicaberti@proton.me"]
+username = random.choice(userlist)
+username = "ginoverdi81@libero.it"
 password = "Viaggiatore45!"
 print(username)
 
@@ -241,15 +248,22 @@ chrome_options.add_argument('--start-maximized')
 #chrome_options.add_argument("--clear-data")
 # Per nascondere utilizzo automazione
 chrome_options.add_argument("--disable-blink-features=AutomationControlled")
+chrome_options.add_argument("--disable-notifications")
+# Disabilita le barre informative del browser
+chrome_options.add_argument("--disable-infobars")
+# Disabilita il blocco dei pop-up
+chrome_options.add_argument("--disable-popup-blocking")
+
 
 #chiedo in input città e date 
 citta = input("Citta:")
 # Variabile per denominare file csv
 citta_csv = citta.strip().lower()
 datain= input("Check-in:")
-if len(datain)<1: datain = "2024-03-28"
+
+if len(datain)<1: datain = "2024-06-20"
 dataout= input("Check-out:")
-if len(dataout)<1: dataout = "2024-03-29"
+if len(dataout)<1: dataout = "2024-06-21"
 
 start_time = time.time()
 #ottengo data e orario in cui ho effettuato ricerca
@@ -272,7 +286,10 @@ except:
 
 # Lista con i dati degli hotel e inizializzazione header
 dati_hotel = []
-dati_hotel.append(("nome_hotel","prezzo_iniziale","prezzo","credito_guadagnato","stanza","città","data","punteggio","stelle","stelle_booking","partner_preferiti","novita","evidenza","numero_recensioni","distanza_centro","genius","offerte","colazione_inclusa","senza_pagamento_anticipato","cancellazione_gratuita","os","username","user_agent_type","TIMESTAMP"))  
+dati_hotel.append(("nome_hotel","prezzo_iniziale","prezzo","credito_guadagnato","stanza","città",
+                   "data","punteggio","stelle","stelle_booking","partner_preferiti","novita","evidenza",
+                   "numero_recensioni","distanza_centro","genius","offerte","colazione_inclusa",
+                   "senza_pagamento_anticipato","cancellazione_gratuita","os","username","user_agent_type","TIMESTAMP"))  
 # Lista per card html degli hotel
 html_content_list=[]
 
@@ -410,6 +427,7 @@ elif choice == 0 :
     
     try:     #eseguo ricerca mobile
         search = driver.find_element(By.CSS_SELECTOR,'input[name="ss"]')
+        print("ciao")
         search.click()
         for i in range(12):
             search.send_keys(Keys.BACK_SPACE)
